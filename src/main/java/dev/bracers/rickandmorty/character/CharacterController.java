@@ -1,5 +1,6 @@
 package dev.bracers.rickandmorty.character;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class CharacterController {
 		try {
 			characters = characterService.getCharacter(name);
 		} catch (IllegalStateException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ArrayList<Character>());
 		}
 		return ResponseEntity.ok().body(characters);
 	}
