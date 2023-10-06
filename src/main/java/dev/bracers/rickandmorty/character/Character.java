@@ -28,7 +28,7 @@ public class Character {
 	
 	@JsonProperty("first_apppearance")
 	@Transient
-	private String firstApperance;
+	private String firstAppearance;
 	
 	public Character() {
 		
@@ -64,12 +64,12 @@ public class Character {
 		this.episodes = episodes;
 	}
 
-	public String getFirstApperance() {
+	public String getFirstAppearance() {
 		return this.getEpisodes().get(0).getAirDate();
 	}
 
-	public void setFirstApperance(String firstApperance) {
-		this.firstApperance = firstApperance;
+	public void setFirstAppearance(String firstAppearance) {
+		this.firstAppearance = firstAppearance;
 	}
 	
 	

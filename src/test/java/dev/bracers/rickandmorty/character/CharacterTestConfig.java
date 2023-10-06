@@ -52,7 +52,10 @@ public class CharacterTestConfig {
 			List<Episode> episodes = Arrays.asList(
 					new Episode(1L, "Episode 1", "September 4, 2013"),
 					new Episode(2L, "Episode 2", "September 14, 2013"),
-					new Episode(3L, "Episode 3", "October 4, 2013"));
+					new Episode(3L, "Episode 3", "September 24, 2013"),
+					new Episode(4L, "Episode 4", "October 4, 2013"),
+					new Episode(5L, "Episode 5", "October 14, 2013"),
+					new Episode(6L, "Episode 6", "October24, 2013"));
 			
 			repository.saveAll(episodes);
 		};
@@ -70,7 +73,10 @@ public class CharacterTestConfig {
 							Arrays.asList(
 									new Episode(1L),
 									new Episode(2L),
-									new Episode(3L)
+									new Episode(3L),
+									new Episode(4L),
+									new Episode(5L),
+									new Episode(6L)
 									)
 					),
 					new Character(
@@ -78,7 +84,25 @@ public class CharacterTestConfig {
 							"Morty Smith",
 							Arrays.asList(
 									new Episode(1L),
+									new Episode(2L),
+									new Episode(3L),
+									new Episode(4L),
+									new Episode(5L),
+									new Episode(6L)
+							)
+					),
+					new Character(
+							3L,
+							"Abadango Cluster Princess",
+							Arrays.asList(
 									new Episode(3L)
+							)
+					),
+					new Character(
+							4L,
+							"Rick Sanchez",
+							Arrays.asList(
+									new Episode(4L)
 							)
 					)
 			);
@@ -128,7 +152,7 @@ public class CharacterTestConfig {
         //If the value of this property is true, Hibernate writes all SQL
         //statements to the console.
         jpaProperties.put("hibernate.show_sql", 
-                env.getRequiredProperty("hibernate.show_sql")
+                env.getRequiredProperty("spring.jpa.show-sql")
         );
  
         //If the value of this property is true, Hibernate will format the SQL
@@ -137,7 +161,6 @@ public class CharacterTestConfig {
                 env.getRequiredProperty("hibernate.format_sql")
         );
         
- 
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
  
         return entityManagerFactoryBean;

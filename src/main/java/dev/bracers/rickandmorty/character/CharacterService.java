@@ -18,8 +18,8 @@ public class CharacterService {
 
 	public List<Character> getCharacter(String name) {
 		Optional<List<Character>> characterOptional = characterRepository.findCharacterByName(name);
-		if (!characterOptional.isPresent()) {
-			throw new IllegalStateException("No character with that ID.");
+		if (!characterOptional.isPresent() || (characterOptional.isPresent() && characterOptional.get().isEmpty())) {
+			throw new IllegalStateException("No character with that name.");
 		}
 		return characterOptional.get();
 	}
