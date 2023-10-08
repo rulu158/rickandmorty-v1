@@ -79,6 +79,7 @@ Run them just as you would with any JUnit test.
 ## How Postman tests work
 
 Just import the file **postman/rickandmorty_tests.postman_collection.json** of the repository into Postman and run the collection tests. If everything works fine, you will get something like this:
+
 ![Tests OK](http://bracers.dev/wp-content/uploads/2023/10/Screenshot-from-2023-10-08-19-20-59.png)
 
 ## Docker
@@ -86,18 +87,24 @@ Just import the file **postman/rickandmorty_tests.postman_collection.json** of t
 You can find the **Dockerfile** for building an image of the application in this repository. The application image is also in my **Docker Hub** repository, which can be found at [https://hub.docker.com/r/rulu158/rickandmorty](https://hub.docker.com/r/rulu158/rickandmorty).
 
 You can run the image at port 9950 as follows:
+
 ```
 docker pull rulu158/rickandmorty
 docker run -p 9950:9950 rulu158/rickandmorty
 ```
 
+## API Documentation
+
+You can find the API documentation via Swagger at:
+
+```
+http://localhost:9950/swagger-ui/index.html
+```
+
 ## My Deployment
 
-I deployed the application on my VPS (dev.bracers.dev), and you can call it as follows:
-```
-http://dev.bracers.dev:9950/api/v1/search-character-appearance?name=Super Turkey
-```
-or by using my router (developed also in Java):
+I have deployed the application on my VPS (dev.bracers.dev), and you can call it as follows using my router (developed also in Java and in my Github):
+
 ```
 https://dev.bracers.dev/app/rickandmorty/path/api/v1/search-character-appearance?name=Super Turkey
 ```
