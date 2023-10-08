@@ -64,7 +64,9 @@ Consumers take the original API endpoints for Characters and Episodes and pagina
 
 ## How Application works
 
-At startup of the application, we already have the data from the original API, so we only need repositories for Episodes and Characters and one Controller (CharacterController) to achieve the desired result: query our in-memmory database and get the information.
+The application runs at port 9950 by default.
+
+At startup of the application, we already have the data from the original API, so we only need repositories for Episodes and Characters and one Controller (**CharacterController**) to achieve the desired result: query our in-memmory database and get the information with maximum speed.
 
 ## How JUnit 5 tests work
 
@@ -73,3 +75,29 @@ For testing, we first create a pseudo-mock of the startup of the application, ad
 After we have the initial values in our repositories, we test the Service and the CharacterRepository itself (at **CharacterServiceTest** and **CharacterRepositoryTest**, respectively.
 
 Run them just as you would with any JUnit test.
+
+## How Postman tests work
+
+Just import the file **postman/rickandmorty_tests.postman_collection.json** of the repository into Postman and run the collection tests. If everything works fine, you will get something like this:
+![Tests OK](http://bracers.dev/wp-content/uploads/2023/10/Screenshot-from-2023-10-08-19-20-59.png)
+
+## Docker
+
+You can find the **Dockerfile** for building an image of the application in this repository. The application image is also in my **Docker Hub** repository, which can be found at [https://hub.docker.com/r/rulu158/rickandmorty](https://hub.docker.com/r/rulu158/rickandmorty).
+
+You can run the image at port 9950 as follows:
+```
+docker pull rulu158/rickandmorty
+docker run -p 9950:9950 rulu158/rickandmorty
+```
+
+## My Deployment
+
+I deployed the application on my VPS (dev.bracers.dev), and you can call it as follows:
+```
+http://dev.bracers.dev:9950/api/v1/search-character-appearance?name=Super Turkey
+```
+or by using my router (developed also in Java):
+```
+https://dev.bracers.dev/app/rickandmorty/path/api/v1/search-character-appearance?name=Super Turkey
+```
