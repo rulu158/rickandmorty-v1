@@ -3,7 +3,6 @@ package dev.bracers.rickandmorty.character;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -27,44 +26,39 @@ class CharacterRepositoryTest {
 	
 	@Test
 	void testFindCharacterByNameRickIsPresent() {		
-		Optional<List<Character>> expected = underTest.findCharacterByName("Rick Sanchez");
+		List<Character> expected = underTest.findCharacterByName("Rick Sanchez");
 		
-		assertThat(expected).isPresent();
-		assertThat(expected.get().size()).isGreaterThan(0);
+		assertThat(expected.size()).isGreaterThan(0);
 	}
 	
 	@Test
 	void testFindCharacterByNameMortyIsPresentInAllEpisodes() {
-		Optional<List<Character>> expected = underTest.findCharacterByName("Morty Smith");
+		List<Character> expected = underTest.findCharacterByName("Morty Smith");
 		
-		assertThat(expected).isPresent();
-		assertThat(expected.get()).hasSize(1);
-		assertThat(expected.get().get(0).getEpisodes()).hasSize(6);
+		assertThat(expected).hasSize(1);
+		assertThat(expected.get(0).getEpisodes()).hasSize(6);
 	}
 	
 	@Test
 	void testFindCharacterByNameAbadangoIsPresentInOneEpisode() {
-		Optional<List<Character>> expected = underTest.findCharacterByName("Abadango Cluster Princess");
+		List<Character> expected = underTest.findCharacterByName("Abadango Cluster Princess");
 		
-		assertThat(expected).isPresent();
-		assertThat(expected.get()).hasSize(1);
+		assertThat(expected).hasSize(1);
 	}
 	
 	@Test
 	void testFindCharacterByNameOriginalRickFirstAppearanceIsCorrect() {
-		Optional<List<Character>> expected = underTest.findCharacterByName("Rick Sanchez");
+		List<Character> expected = underTest.findCharacterByName("Rick Sanchez");
 		
-		assertThat(expected).isPresent();
-		assertThat(expected.get().size()).isGreaterThan(0);
-		assertThat(expected.get().get(0).getFirstAppearance()).isEqualTo("September 4, 2013");
+		assertThat(expected.size()).isGreaterThan(0);
+		assertThat(expected.get(0).getFirstAppearance()).isEqualTo("September 4, 2013");
 	}
 	
 	@Test
 	void testFindCharacterByNameRaulIsNotPresent() {
-		Optional<List<Character>> expected = underTest.findCharacterByName("Raul Garcia");
+		List<Character> expected = underTest.findCharacterByName("Raul Garcia");
 		
-		assertThat(expected).isPresent();
-		assertThat(expected.get()).hasSize(0);
+		assertThat(expected).hasSize(0);
 	}
 
 }

@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "8a618dca-da24-4218-a589-ec5427a0522c",
+		"name": "Rickandmorty Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30303580"
+	},
+	"item": [
+		{
+			"name": "RickSanchez",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"At least 4 Ricks\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.gte(4);",
+							"});",
+							"",
+							"pm.test(\"Name is 'Rick Sanchez'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eql(\"Rick Sanchez\");",
+							"});",
+							"",
+							"pm.test(\"First episode of original Rick is 'Pilot'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].episodes[0].name).to.eql(\"Pilot\");",
+							"});",
+							"",
+							"pm.test(\"First appearance of original Rick is 'December 2, 2013'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].first_appearance).to.eql(\"December 2, 2013\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9950/api/v1/search-character-appearance?name=Rick Sanchez",
+					"host": [
+						"localhost"
+					],
+					"port": "9950",
+					"path": [
+						"api",
+						"v1",
+						"search-character-appearance"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Rick Sanchez"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SuperTurkey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Length is 1 or more\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.gte(1);",
+							"});",
+							"",
+							"pm.test(\"Name is 'Super Turkey'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].name).to.eql(\"Super Turkey\");",
+							"});",
+							"",
+							"pm.test(\"First appearance is 'July 25, 2021'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].first_appearance).to.eql(\"July 25, 2021\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9950/api/v1/search-character-appearance?name=Super Turkey",
+					"host": [
+						"localhost"
+					],
+					"port": "9950",
+					"path": [
+						"api",
+						"v1",
+						"search-character-appearance"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Super Turkey"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Empty list returned\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9950/api/v1/search-character-appearance?name=This Character Does Not Exists Yet",
+					"host": [
+						"localhost"
+					],
+					"port": "9950",
+					"path": [
+						"api",
+						"v1",
+						"search-character-appearance"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "This Character Does Not Exists Yet"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

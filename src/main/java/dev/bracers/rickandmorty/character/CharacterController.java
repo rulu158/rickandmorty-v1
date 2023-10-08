@@ -27,7 +27,7 @@ public class CharacterController {
 		List<Character> characters;
 		try {
 			characters = characterService.getCharacter(name);
-		} catch (IllegalStateException e) {
+		} catch (CharacterNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ArrayList<Character>());
 		}
 		return ResponseEntity.ok().body(characters);

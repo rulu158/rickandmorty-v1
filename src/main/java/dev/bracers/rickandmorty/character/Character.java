@@ -26,7 +26,7 @@ public class Character {
 	@ManyToMany
 	private List<Episode> episodes;
 	
-	@JsonProperty("first_apppearance")
+	@JsonProperty("first_appearance")
 	@Transient
 	private String firstAppearance;
 	
