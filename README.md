@@ -68,6 +68,20 @@ The application runs at port 9950 by default.
 
 At startup of the application, we already have the data from the original API, so we only need repositories for Episodes and Characters and one Controller (**CharacterController**) to achieve the desired result: query our in-memmory database and get the information with maximum speed.
 
+Notice that the first_appearance field returned is based on the date of the first Episode for the Character we are querying.
+
+An empty list and 404 response is returned if no Characters are found.
+
+## Endpoint
+
+The application only has one endpoint:
+
+```
+/api/v1/search-character-appearance?name={a_name}
+```
+
+This endpoint returns a JSON object with the character (or characters, as the universe of Rick and Morty is actually a multiverse, so multiple Ricks exists in different planes of existance, for example) containing its name, a list of the episodes its appears on, and the date of first appearance on the series.
+
 ## How JUnit 5 tests work
 
 For testing, we first create a pseudo-mock of the startup of the application, adding some arbitrary Episodes and Characters to an in-memmory test database. This is done in **test** -> **dev.bracers.rickandmorty.character.CharacterTestConfig.java**.
